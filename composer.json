@@ -1,0 +1,61 @@
+{
+    "name": "simple-yii2/app-catalogue",
+    "keywords": ["project template"],
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "simple-yii2/cms": "^1.0",
+        "simple-yii2/settings": "^1.0",
+        "simple-yii2/page": "^1.0",
+        "simple-yii2/feedback": "^1.0",
+        "simple-yii2/menu": "^1.1",
+        "simple-yii2/news": "^1.0",
+        "simple-yii2/slider": "^1.0",
+        "simple-yii2/seo": "^1.0",
+        "simple-yii2/contact": "^1.0",
+        "simple-yii2/block": "^1.0"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+
+        "codeception/base": "^2.2.3",
+        "codeception/verify": "~0.3.1",
+        "codeception/specify": "~0.4.3"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "storage": "0777",
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "web/public": "0777",
+                    "web/upload": "0777",
+                    "yii": "0755"
+                }
+            ],
+            "generateCookieValidationKey": [
+                "config/web.php"
+            ]
+        },
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
